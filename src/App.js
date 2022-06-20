@@ -13,7 +13,6 @@ import NotFoundPage from './components/Pages/NotFound/NotFound';
 function getToken() {
   const tokenString = sessionStorage.getItem("userData");
   const userToken = JSON.parse(tokenString);
-  console.log(userToken);
   return userToken;
 }
 export default class App extends Component {
