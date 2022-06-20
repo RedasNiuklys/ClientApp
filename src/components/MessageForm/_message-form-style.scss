@@ -1,0 +1,28 @@
+﻿@import '../Utils/variables';
+@import '../Utils/mixins';
+
+.message-form {
+    &__container {
+        @include absCenter;
+        width: 40%;
+        background-color: $color-white;
+        border-radius: $default-form-border-radius;
+    }
+
+    &__content {
+        text-align:center;
+        padding: 9rem 5rem;
+    }
+
+    &__textarea {
+        margin-top: 3rem;
+        width: 100%;
+    }
+
+    &__success-message {
+        color: $color-green;
+        font-size: 1.7rem;
+        font-weight: bold;
+        margin-top: 1rem;
+    }
+}

@@ -1,0 +1,48 @@
+﻿@mixin absCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin contentSpinner {
+    border: 1rem solid $color-black;
+    border-radius: 50%;
+    border-top: 1rem solid $color-white;
+    width: 6rem;
+    height: 6rem;
+    z-index: 102;
+    position: absolute;
+    top: 48%;
+    left: 48%;
+    animation: spin 2s linear infinite;
+    z-index: 200;
+}
+
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == mobile {
+        @media (max-width: 37.5em) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == tab-port {
+        @media (max-width: 56.25em) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == tab-land {
+        @media (max-width: 75em) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == big-desktop {
+        @media (min-width: 112.5em) {
+            @content;
+        }
+    }
+}
+

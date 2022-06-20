@@ -1,0 +1,306 @@
+﻿@import '../Utils/mixins';
+@import '../Utils/variables';
+
+.inbox {
+    &__container {
+        @include absCenter;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        overflow-y: scroll;
+        box-shadow: rgba($color-black, 0.05) 0px 6px 24px 0px, rgba($color-black, 0.08) 0px 0px 0px 1.5px;
+        background-color: #f4f6f8;
+
+        @media (min-width: 768px) {
+            width: 90%;
+            height: 80vh;
+        }   
+
+        @media (min-width: 1024px) {
+            width: 80%;
+        }
+
+        &::-webkit-scrollbar {
+            width: .5rem;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background: $color-dark-green;
+        }
+    }
+
+    &__tabs {
+        width: 100%;
+        position: relative;
+        background-color: $color-white;
+        color: $color-dark-green;
+        font-weight: bold;
+        cursor: pointer;
+
+        &-name {
+            display: inline-block;
+            font-size: 2rem;
+            text-align: center;
+            padding: 2rem;
+            cursor: pointer;
+
+            @include respond(mobile) {
+                font-size: 1.5rem;
+                padding: 1rem;
+            }
+        }
+
+        &-border {
+            position: absolute;
+            border-top: 2px solid $color-dark-green;
+            width: 16rem;
+            transition: left .5s ease-in-out;
+            margin: 0;
+
+            @include respond(mobile) {
+                width: 13rem;
+            }
+
+            &--sent {
+                left: 19rem;
+
+                @include respond(mobile) {
+                    left: 13rem;
+                }
+            }
+
+            &--received {
+                left: 0;
+            }
+        }
+    }
+
+    &__content {
+        width: 100%;
+        border-radius: $default-form-border-radius;
+        padding: 1rem;
+
+        &-text {
+            @include absCenter;
+            font-size: 2rem;
+        }
+
+        &-item {
+            height: 10rem;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            transition: all .2s;
+            cursor: pointer;
+            background-color: $color-white;
+            border-radius: 1rem;
+
+            &:hover {
+                background-color: rgba($color-black, .1);
+            }
+
+            &--black {
+                background-color: rgba($color-black, .1);
+            }
+
+            &:not(:first-child) {
+                margin-top: 1rem;
+            }
+
+            & > span {
+                font-size: 2rem;
+                display: inline-block;
+
+                @media (min-width: 768px) {
+                    font-size: 2.5rem;
+                }
+            }
+        }
+    }
+}
+
+.message {
+    &-sender {
+       width: 20%;
+       overflow: hidden;
+       text-overflow: ellipsis;
+    }
+
+    &-topic {
+        flex-grow: 1;
+        margin-left: 2rem;
+    }
+}
+
+.inbox-error-message {
+    @include absCenter;
+    font-size: 2rem;
+    font-weight: bold;
+    color: $color-dark-green;
+
+    @media (min-width: 768px) {
+        font-size: 3rem;
+    }
+
+    &-icon {
+        margin-left: 1rem;
+    }
+}
+
+.loading-spinner {
+    @include contentSpinner;
+}
+
+.message-content {
+    padding: 1rem;
+    background-color: $color-white; 
+
+    @media (min-width: 768px) {
+        padding: 2rem 3rem;
+    }
+}
+
+.message-header {
+    &__date {
+        display: flex;
+        align-items: center;
+
+        & > span {
+            color: $color-paragraph-grey;
+            font-weight: bold;
+        }
+    }
+
+
+    & > h2 {
+        margin-top: 1rem;
+    }
+}
+
+.messages-container {
+    margin-top: 0;
+
+    @media (min-width) {
+        margin-top: 5rem;
+    }
+
+    .message-teaser {
+        display: flex;
+        padding: 1rem 0;
+        align-items: center;
+        border-bottom: 1px solid $color-paragraph-grey;
+        cursor: pointer;
+
+        @media (min-width) {
+            padding: 2rem 0;
+        }
+
+        &--last {
+            border-bottom: none;
+        }
+
+        &__icon {
+            margin-right: 1rem;
+            color: $color-paragraph-grey;
+            width: 4rem;
+
+            @media (min-width) {
+                margin-right: 3rem;
+            }
+        }
+
+        &__name {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            overflow: hidden;  
+            max-width: 6rem;
+            text-overflow: ellipsis;
+
+            @media (min-width: 768px) {
+                max-width: 15rem;
+            }
+        }
+
+        &__text {
+            color: $color-paragraph-grey;
+            margin-left: 2rem;
+            max-width: 12rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            @media (min-width: 768px) {
+                max-width: 25rem;
+            }
+        }
+
+        &__date {
+            margin-left: auto;
+            color: $color-paragraph-grey;
+        }
+
+        & > span {
+            font-size: 1.4rem;
+
+            @media (min-width: 768px) {
+                font-size: 1.8rem;
+            }
+        }
+    }
+
+    .message-text-wrapper {
+        padding: 2rem 0;
+    }
+
+    .message-input-wrapper {
+        @media (min-width: 768px) {
+            padding: 0 5rem;
+        }
+    }
+}
+
+.message-text {
+    font-size: 1.4rem;
+
+    @media (min-width: 768px) {
+        font-size: 1.8rem;
+    }
+}
+
+.message-input {
+    height: 20rem;
+    width: 100%;
+}
+
+.user-picture {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 3rem;
+    object-fit: contain;
+}
+
+.message-button-wrapper {
+    padding: 2rem 0;
+    text-align: end;
+}
+
+.send-button {
+    background-color: $color-dark-green;
+    font-size: 1.8rem;
+    padding: 1rem;
+
+    &:hover {
+        color: $color-white;
+    }
+
+    &__text {
+        margin-left: 1rem;
+    }
+}
+
+.icon-arrow {
+    margin-right: 2rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+}

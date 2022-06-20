@@ -1,0 +1,84 @@
+﻿@import '../../Utils/variables';
+@import '../../Utils/mixins';
+
+.eldership-feed {
+    display: flex;
+
+    @media (min-width: 768px) {
+        margin-top: 3rem;    
+    }
+
+    @media (min-width: 1024px) {
+        margin-top: 5rem;
+    }
+}
+
+.eldership {
+    &__content {
+        min-height: 200rem;
+        padding-bottom: 3rem;
+        width: 100%;
+
+        @media (min-width: 1024px) {
+            width: 70%;
+        }
+    }
+
+    &__feed {
+        @media (min-width: 1024px) {
+            position: relative;
+        }
+    }
+}
+
+.loading-spinner {
+    @include contentSpinner;
+    top: 55% !important;
+    left: 43% !important; 
+
+    @media (min-width: 768px) {
+        top: 80% !important;
+        left: 45% !important; 
+    }
+
+    @media (min-width: 1024px) {
+        top: initial;
+        left: initial;
+    }
+}
+
+.cover-wrapper {
+    height: 40rem;
+
+    & > img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+
+        @media (min-width: 1024px) {
+            border-radius: 1rem;
+        }
+    }
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        padding: 0 2rem;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 0;
+    }
+}
+
+.buttons-wrapper {
+    display: flex;
+    gap: 2rem;
+}
